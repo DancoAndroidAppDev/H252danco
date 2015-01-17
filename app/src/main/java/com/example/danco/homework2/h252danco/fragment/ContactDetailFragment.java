@@ -3,6 +3,7 @@ package com.example.danco.homework2.h252danco.fragment;
 import android.app.Activity;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,27 +18,11 @@ import java.text.DecimalFormat;
 import java.text.NumberFormat;
 
 
-/**
- * A simple {@link android.support.v4.app.Fragment} subclass.
- * Activities that contain this fragment must implement the
- * {@link com.example.danco.homework2.h252danco.fragment.ContactDetailFragment.DynamicFragmentListener} interface
- * to handle interaction events.
- * Use the {@link ContactDetailFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class ContactDetailFragment extends Fragment
         implements View.OnClickListener, DatePickerFragment.DatePickerFragmentListener {
     public static final String DATE_PICKER_TAG = "date_picker";
 
     public static final String CONTACT = "contact";
-
-    private String contactId;
-    private String contactName;
-    private String contactStreetAddress;
-    private String city, state, zip;
-    private int birthYear;
-    private int birthMonth;
-    private int birthDayOfMonth;
 
     private DummyContent.DummyItem item;
 
@@ -77,15 +62,6 @@ public class ContactDetailFragment extends Fragment
         } else {
             item = savedInstanceState.getParcelable(CONTACT);
         }
-
-        contactName = item.name;
-        contactStreetAddress = item.streetAddress;
-        city= item.city;
-        state = item.state;
-        zip = item.zip;
-        birthYear = item.birthYear;
-        birthMonth = item.birthMonth;
-        birthDayOfMonth = item.birthDayOfMonth;
     }
 
 
@@ -98,20 +74,27 @@ public class ContactDetailFragment extends Fragment
 
 
     @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        setRetainInstance(true);
+    }
+
+
+    @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         ViewHolder holder = new ViewHolder(view);
         view.setTag(holder);
 
-        holder.contactName.setText(contactName);
+        holder.contactName.setText(item.name);
         holder.contactName.setTypeface(Typeface.DEFAULT_BOLD);
         holder.contactName.setOnClickListener(this);
         holder.streetAddress.setText(
-                String.format("%s\n%s, %s %s", contactStreetAddress, city, state, zip));
+                String.format("%s\n%s, %s %s", item.streetAddress, item.city, item.state, item.zip));
         holder.dob.setText(String.format("%s/%s/%s",
-                dayMonthFormat.format(birthYear),
-                dayMonthFormat.format(birthMonth),
-                dayMonthFormat.format(birthDayOfMonth)));
+                dayMonthFormat.format(item.birthYear),
+                dayMonthFormat.format(item.birthMonth),
+                dayMonthFormat.format(item.birthDayOfMonth)));
         holder.dob.setOnClickListener(this);
     }
 
@@ -144,9 +127,9 @@ public class ContactDetailFragment extends Fragment
 
     @Override
     public void onOkSelected(int year, int month, int dayOfMonth) {
-        this.birthYear = year;
-        this.birthMonth = month;
-        this.birthDayOfMonth = dayOfMonth;
+        this.item.birthYear = year;
+        this.item.birthMonth = month;
+        this.item.birthDayOfMonth = dayOfMonth;
         item.birthYear = year;
         item.birthMonth = month;
         item.birthDayOfMonth = dayOfMonth;
@@ -154,9 +137,9 @@ public class ContactDetailFragment extends Fragment
         ViewHolder holder = getViewHolder();
         if (holder != null) {
             holder.dob.setText(String.format("%s/%s/%s",
-                    dayMonthFormat.format(birthYear),
-                    dayMonthFormat.format(birthMonth),
-                    dayMonthFormat.format(birthDayOfMonth)));
+                    dayMonthFormat.format(item.birthYear),
+                    dayMonthFormat.format(item.birthMonth),
+                    dayMonthFormat.format(item.birthDayOfMonth)));
         }
     }
 

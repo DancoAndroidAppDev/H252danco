@@ -1,40 +1,24 @@
 package com.example.danco.homework2.h252danco.activity;
 
-import android.content.Context;
 import android.content.Intent;
-import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
-import com.example.danco.homework2.h252danco.DummyContent;
 import com.example.danco.homework2.h252danco.R;
-import com.example.danco.homework2.h252danco.fragment.ContactListFragment;
 
+public class MainActivity extends ActionBarActivity implements View.OnClickListener {
+    private static final String TAG = MainActivity.class.getName();
 
-public class ContactListActivity extends ActionBarActivity
-        implements ContactListFragment.ItemFragmentListener {
-
-    private static final String TAG = ContactListActivity.class.getName();
-
-    public static Intent buildIntent(Context context) {
-        Log.i(TAG, "building ContactListActivity intent");
-        return new Intent(context, ContactListActivity.class);
-    }
-
-
-    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_contact_list);
+        setContentView(R.layout.activity_main);
 
-        getSupportActionBar().setTitle(R.string.app_name);
-
-        if (savedInstanceState == null) {
-            ContactListFragment fragment = (ContactListFragment)
-                    getSupportFragmentManager().findFragmentById(R.id.main_fragment);
-        }
+        findViewById(R.id.contactListButton).setOnClickListener(this);
+        findViewById(R.id.multiFragmentButton).setOnClickListener(this);
     }
 
 
@@ -44,6 +28,7 @@ public class ContactListActivity extends ActionBarActivity
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -60,8 +45,20 @@ public class ContactListActivity extends ActionBarActivity
         return super.onOptionsItemSelected(item);
     }
 
+
     @Override
-    public void onUpdateDynamicFragment(DummyContent.DummyItem item) {
-        startActivity(ContactDetailActivity.buildIntent(this, item));
+    public void onClick(View v) {
+        Intent intent = null;
+
+        switch (v.getId()) {
+            case R.id.contactListButton:
+                Log.i(TAG, "starting contactListActivity");
+                intent = ContactListActivity.buildIntent(this);
+                break;
+        }
+
+        if (intent != null) {
+            startActivity(intent);
+        }
     }
 }
