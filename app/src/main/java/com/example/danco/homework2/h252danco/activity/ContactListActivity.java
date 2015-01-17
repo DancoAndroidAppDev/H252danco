@@ -60,6 +60,7 @@ public class ContactListActivity extends ActionBarActivity
         return true;
     }
 
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
@@ -75,8 +76,18 @@ public class ContactListActivity extends ActionBarActivity
         return super.onOptionsItemSelected(item);
     }
 
+
     @Override
     public void onUpdateDynamicFragment(DummyContent.DummyItem item) {
-        startActivity(ContactDetailActivity.buildIntent(this, item));
+        if (haveDynamicFragment) {
+            ContactDetailFragment fragment =
+                    ContactDetailFragment.newInstance(DummyContent.ITEMS.get(0));
+            getSupportFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.contact_detail_container, fragment, DETAIL_FRAGMENT)
+                    .commit();
+        } else {
+            startActivity(ContactDetailActivity.buildIntent(this, item));
+        }
     }
 }
