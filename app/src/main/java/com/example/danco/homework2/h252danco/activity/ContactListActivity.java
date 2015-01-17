@@ -10,6 +10,7 @@ import android.view.MenuItem;
 
 import com.example.danco.homework2.h252danco.DummyContent;
 import com.example.danco.homework2.h252danco.R;
+import com.example.danco.homework2.h252danco.fragment.ContactDetailFragment;
 import com.example.danco.homework2.h252danco.fragment.ContactListFragment;
 
 
@@ -17,6 +18,11 @@ public class ContactListActivity extends ActionBarActivity
         implements ContactListFragment.ItemFragmentListener {
 
     private static final String TAG = ContactListActivity.class.getName();
+
+    private static final String DETAIL_FRAGMENT = "detail";
+    private static final int DYNAMIC_REQUEST = 100;
+
+    private boolean haveDynamicFragment = false;
 
     public static Intent buildIntent(Context context) {
         Log.i(TAG, "building ContactListActivity intent");
@@ -31,9 +37,18 @@ public class ContactListActivity extends ActionBarActivity
 
         getSupportActionBar().setTitle(R.string.app_name);
 
-        if (savedInstanceState == null) {
-            ContactListFragment fragment = (ContactListFragment)
-                    getSupportFragmentManager().findFragmentById(R.id.main_fragment);
+        haveDynamicFragment = findViewById(R.id.contact_detail_container) != null;
+
+        if (haveDynamicFragment) {
+            ContactDetailFragment contactDetail = (ContactDetailFragment)
+                    getSupportFragmentManager().findFragmentByTag(DETAIL_FRAGMENT);
+            if (contactDetail == null) {
+                contactDetail = ContactDetailFragment.newInstance(DummyContent.ITEMS.get(0));
+                getSupportFragmentManager()
+                        .beginTransaction()
+                        .add(R.id.contact_detail_container, contactDetail, DETAIL_FRAGMENT)
+                        .commit();
+            }
         }
     }
 
