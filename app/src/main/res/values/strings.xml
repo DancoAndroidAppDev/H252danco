@@ -11,5 +11,6 @@
     <string name="title_activity_dynamic_grid_view">DynamicGridViewActivity</string>
     <string name="sample_subtitle_text">Sample subtitle text</string>
     <string name="image_description">Image</string>
+    <string name="gridViewButtonText">Start GridView</string>
 
 </resources>

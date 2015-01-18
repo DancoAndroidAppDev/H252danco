@@ -1,21 +1,14 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                xmlns:tools="http://schemas.android.com/tools"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:paddingLeft="@dimen/activity_horizontal_margin"
-                android:paddingRight="@dimen/activity_horizontal_margin"
-                android:paddingTop="@dimen/activity_vertical_margin"
-                android:paddingBottom="@dimen/activity_vertical_margin"
-                tools:context="com.example.danco.homework2.h252danco.activity.DynamicGridViewActivity">
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             xmlns:tools="http://schemas.android.com/tools"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+             tools:context="com.example.joeroger.sampletablets.activity.PaddingActivity"
+             tools:ignore="MergeRootFrame">
 
-    <GridView android:id="@+id/dynamicGridView"
-        android:numColumns="auto_fit"
-        android:gravity="center"
-        android:columnWidth="0dp"
-        android:stretchMode="columnWidth"
+    <fragment
+        android:id="@+id/dynamicGridView"
+        android:name="com.example.danco.homework2.h252danco.fragment.DynamicGridViewFragment"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"/>
 
-        </GridView>
-
-</RelativeLayout>
+</FrameLayout>

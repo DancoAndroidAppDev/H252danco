@@ -52,10 +52,10 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
 
         switch (v.getId()) {
             case R.id.contactListButton:
-                Log.i(TAG, "starting contactListActivity");
                 intent = ContactListActivity.buildIntent(this);
                 break;
-            case R.id.dynamicGridView:
+            case R.id.gridViewActivity:
+                Log.i(TAG, "Starting dynamic GridView");
                 intent = DynamicGridViewActivity.buildIntent(this);
                 break;
         }

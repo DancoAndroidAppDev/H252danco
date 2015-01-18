@@ -35,7 +35,7 @@ public class DynamicGridViewFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater,
                              @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.activity_dynamic_grid_view, container, false);
+        return inflater.inflate(R.layout.fragment_dynamic_gridview, container, false);
     }
 
 
@@ -43,7 +43,7 @@ public class DynamicGridViewFragment extends Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        GridView grid = (GridView) view.findViewById(R.id.dynamicGridView);
+        GridView grid = (GridView) view.findViewById(R.id.gridView);
         ArrayAdapter<String> adapter =
                 new ArrayAdapter<String>(getActivity(), R.layout.grid_cell, R.id.title, data);
         grid.setAdapter(adapter);

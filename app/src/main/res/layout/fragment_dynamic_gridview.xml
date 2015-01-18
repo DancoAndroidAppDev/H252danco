@@ -6,15 +6,16 @@
              tools:context="com.example.joeroger.sampletablets.activity.PaddingActivity$PlaceholderFragment">
 
 
-    <GridViewView
-        android:id="@+id/list"
+    <GridView
+        android:id="@+id/gridView"
+        android:numColumns="auto_fit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:paddingEnd="@dimen/list_item_horizontal_margin"
         android:paddingLeft="@dimen/list_item_horizontal_margin"
         android:paddingRight="@dimen/list_item_horizontal_margin"
         android:paddingStart="@dimen/list_item_horizontal_margin"
-        tools:listitem="@layout/list_item_space"
+        tools:listitem="@layout/grid_cell"
         />
 
 </FrameLayout>

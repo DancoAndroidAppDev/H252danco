@@ -31,6 +31,9 @@
         <activity
             android:name=".activity.DynamicGridViewActivity"
             android:label="@string/title_activity_dynamic_grid_view" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.danco.homework2.h252danco.activity.MainActivity" />
         </activity>
     </application>
 
