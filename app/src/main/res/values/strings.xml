@@ -8,5 +8,8 @@
     <string name="title_contact_details">Contact Details</string>
     <string name="title_activity_main">MainActivity</string>
     <string name="contact_list_activity">Start Contact List</string>
+    <string name="title_activity_dynamic_grid_view">DynamicGridViewActivity</string>
+    <string name="sample_subtitle_text">Sample subtitle text</string>
+    <string name="image_description">Image</string>
 
 </resources>

@@ -18,7 +18,7 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
 
         findViewById(R.id.contactListButton).setOnClickListener(this);
-        findViewById(R.id.multiFragmentButton).setOnClickListener(this);
+        findViewById(R.id.gridViewActivity).setOnClickListener(this);
     }
 
 
@@ -54,6 +54,9 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
             case R.id.contactListButton:
                 Log.i(TAG, "starting contactListActivity");
                 intent = ContactListActivity.buildIntent(this);
+                break;
+            case R.id.dynamicGridView:
+                intent = DynamicGridViewActivity.buildIntent(this);
                 break;
         }
 
