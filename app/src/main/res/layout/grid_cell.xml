@@ -15,11 +15,11 @@
         android:id="@+id/image"
         android:layout_width="64dp"
         android:layout_height="64dp"
-        android:src="@android:color/holo_green_dark"
+        android:src="@android:color/holo_orange_dark"
         android:contentDescription="@string/image_description"/>
 
     <TextView
-        android:id="@+id/title"
+        android:id="@+id/gridCellTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="8dp"
@@ -32,10 +32,10 @@
         tools:text="Sample Title"/>
 
     <TextView
-        android:id="@+id/subTitle"
+        android:id="@+id/gridCellSubTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/title"
+        android:layout_below="@id/gridCellTitle"
         android:layout_marginLeft="8dp"
         android:layout_marginStart="8dp"
         android:layout_toStartOf="@id/image"
