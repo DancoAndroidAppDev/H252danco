@@ -55,7 +55,6 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
                 intent = ContactListActivity.buildIntent(this);
                 break;
             case R.id.gridViewActivity:
-                Log.i(TAG, "Starting dynamic GridView");
                 intent = DynamicGridViewActivity.buildIntent(this);
                 break;
         }

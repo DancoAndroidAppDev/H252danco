@@ -44,8 +44,8 @@ public class DynamicGridViewFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         GridView grid = (GridView) view.findViewById(R.id.gridView);
-        ArrayAdapter<String> adapter =
-                new ArrayAdapter<String>(getActivity(), R.layout.grid_cell, R.id.title, data);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(
+                getActivity(), R.layout.grid_cell, R.id.gridCellTitle, data);
         grid.setAdapter(adapter);
     }
 }

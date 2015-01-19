@@ -14,7 +14,6 @@ public class DynamicGridViewActivity extends ActionBarActivity {
     private static final String TAG = DynamicGridViewActivity.class.getName();
 
     public static Intent buildIntent(Context context) {
-        Log.i(TAG, "Building intent");
         return new Intent(context, DynamicGridViewActivity.class);
     }
 
