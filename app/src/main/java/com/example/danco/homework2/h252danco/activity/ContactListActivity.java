@@ -81,7 +81,7 @@ public class ContactListActivity extends ActionBarActivity
     public void onUpdateDynamicFragment(DummyContent.DummyItem item) {
         if (haveDynamicFragment) {
             ContactDetailFragment fragment =
-                    ContactDetailFragment.newInstance(DummyContent.ITEMS.get(0));
+                    ContactDetailFragment.newInstance(item);
             getSupportFragmentManager()
                     .beginTransaction()
                     .replace(R.id.contact_detail_container, fragment, DETAIL_FRAGMENT)
