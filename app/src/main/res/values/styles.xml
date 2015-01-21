@@ -10,7 +10,7 @@
         <item name="android:buttonStyle">@style/OrangeButton</item>
 
         <item name="android:imageButtonStyle">@style/ImageButtonAppTheme</item>
-
+        <item name="android:activatedBackgroundIndicator">@drawable/gridview_item_background</item>
     </style>
 
     <style name="OrangeButton" parent="android:Widget.Holo.Light.Button">

@@ -86,6 +86,7 @@ public class ContactListActivity extends ActionBarActivity
                     .beginTransaction()
                     .replace(R.id.contact_detail_container, fragment, DETAIL_FRAGMENT)
                     .commit();
+
         } else {
             startActivity(ContactDetailActivity.buildIntent(this, item));
         }
