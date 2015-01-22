@@ -17,6 +17,7 @@
               android:paddingRight="@dimen/list_item_horizontal_margin"
               android:paddingStart="@dimen/list_item_horizontal_margin"
               android:background="?android:attr/activatedBackgroundIndicator"
+              android:verticalSpacing="@dimen/list_item_vertical_spacing"
               tools:listitem="@layout/grid_cell"
         />
 </FrameLayout>
