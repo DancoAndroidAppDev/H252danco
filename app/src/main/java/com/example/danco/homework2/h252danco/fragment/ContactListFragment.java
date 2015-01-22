@@ -11,6 +11,7 @@ import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListAdapter;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.danco.homework2.h252danco.DummyContent;
@@ -60,7 +61,9 @@ public class ContactListFragment extends Fragment implements AbsListView.OnItemC
         super.onCreate(savedInstanceState);
 
         mAdapter = new ArrayAdapter<DummyContent.DummyItem>(getActivity(),
-                android.R.layout.simple_list_item_1, android.R.id.text1, DummyContent.ITEMS);
+                android.R.layout.simple_list_item_activated_1,
+                android.R.id.text1,
+                DummyContent.ITEMS);
     }
 
 
@@ -75,7 +78,7 @@ public class ContactListFragment extends Fragment implements AbsListView.OnItemC
 
         // Set OnItemClickListener so we can be notified on item clicks
         mListView.setOnItemClickListener(this);
-
+        mListView.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
         mListView.setSelector(R.drawable.selected_state_selector);
 
         return view;
@@ -107,6 +110,7 @@ public class ContactListFragment extends Fragment implements AbsListView.OnItemC
             // Notify the active callbacks interface (the activity, if the
             // fragment is attached to one) that an item has been selected.
             mListener.onUpdateDynamicFragment(DummyContent.ITEMS.get(position));
+            mListView.setItemChecked(position, true);
         }
     }
 
